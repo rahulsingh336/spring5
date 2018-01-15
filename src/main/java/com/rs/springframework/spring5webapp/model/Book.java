@@ -29,11 +29,13 @@ public class Book {
     public Book(String title, String isbn, Publisher publisher) {
         this.title = title;
         this.isbn = isbn;
+        this.publisher = publisher;
     }
 
     public Book(String title, String isbn, Publisher publisher, Set<Author> authors) {
         this.title = title;
         this.isbn = isbn;
+        this.publisher = publisher;
         this.authors = authors;
     }
 
@@ -61,20 +63,20 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
-    }
-
     public Publisher getPublisher() {
         return publisher;
     }
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
     }
 
     @Override
@@ -84,7 +86,7 @@ public class Book {
 
         Book book = (Book) o;
 
-        return id.equals(book.id);
+        return id != null ? id.equals(book.id) : book.id == null;
     }
 
     @Override
@@ -98,6 +100,7 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
+                ", publisher='" + publisher + '\'' +
                 ", authors=" + authors +
                 '}';
     }
